@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE2D3891287F845F0055CEA6 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2D3890287F845F0055CEA6 /* ImageExtension.swift */; };
 		CEBEAFF2287A411B006C9122 /* NewsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBEAFF1287A411B006C9122 /* NewsApi.swift */; };
 		CEBEAFF5287A45C0006C9122 /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBEAFF4287A45C0006C9122 /* NewsModel.swift */; };
 		CEC9D25F287D6C90005A0F6F /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC9D25E287D6C90005A0F6F /* NewsTableViewCell.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CE2D3890287F845F0055CEA6 /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
 		CEBEAFF1287A411B006C9122 /* NewsApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsApi.swift; sourceTree = "<group>"; };
 		CEBEAFF4287A45C0006C9122 /* NewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
 		CEC9D25E287D6C90005A0F6F /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
@@ -88,6 +90,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE2D388F287F843E0055CEA6 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CE2D3890287F845F0055CEA6 /* ImageExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		CEBEAFF0287A40FA006C9122 /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +138,7 @@
 		CEEB571C2879C63C007E0E9F /* NewsApp */ = {
 			isa = PBXGroup;
 			children = (
+				CE2D388F287F843E0055CEA6 /* Extension */,
 				CEBEAFF0287A40FA006C9122 /* Network */,
 				CEEB574D2879C6AE007E0E9F /* controller */,
 				CEEB571D2879C63C007E0E9F /* AppDelegate.swift */,
@@ -316,6 +327,7 @@
 				CEEB574F2879C6E1007E0E9F /* NewsViewController.swift in Sources */,
 				CEEB57542879C94C007E0E9F /* HomeTabBarController.swift in Sources */,
 				CEBEAFF2287A411B006C9122 /* NewsApi.swift in Sources */,
+				CE2D3891287F845F0055CEA6 /* ImageExtension.swift in Sources */,
 				CEEB57562879CB49007E0E9F /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

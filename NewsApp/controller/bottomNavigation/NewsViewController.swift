@@ -7,9 +7,19 @@
 
 import UIKit
 
+protocol SelectedNewsDelegate
+{
+    func choosenNews(article: Article)
+}
+
 class NewsViewController: UIViewController {
     
     let tableView =  UITableView()
+    
+    
+
+    
+    static var selectedNewsDelegate: SelectedNewsDelegate!
     
     var news =  [Article](){
         didSet {
@@ -39,6 +49,7 @@ class NewsViewController: UIViewController {
         tableView.allowsSelection = true
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
         setupTableViewConstrainst()
+        
 
     }
 
@@ -85,6 +96,15 @@ extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
         let newsCell = news[indexPath.row]
         cell.setNewsCell(news: newsCell)
         return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let vc = DetailsViewController()
+        vc.passedData = news[indexPath.row]
+        navigationController?.pushViewController(vc, animated: false)
+        //dataModel!.articles![indexPath.row])
+        NewsViewController.selectedNewsDelegate?.choosenNews(article: news[indexPath.row])
+        
     }
      func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete =smplementation, return the number of sections
