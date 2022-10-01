@@ -12,6 +12,7 @@ class NewsTableViewCell: UITableViewCell {
     
     var newsImageView = UIImageView()
     var newsTitleView = UILabel()
+    var moreOptionsView = UIButton(type: .system)
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -19,10 +20,13 @@ class NewsTableViewCell: UITableViewCell {
         
         addSubview(newsImageView)
         addSubview(newsTitleView)
+        addSubview(moreOptionsView)
         configureImageView()
         configureTitleView()
+        configureMoreOtionBtn()
         setupImageViewConstraints()
         setupTitleViewConstraints()
+        setupMoreOptionIconConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -37,7 +41,11 @@ class NewsTableViewCell: UITableViewCell {
         newsTitleView.numberOfLines = 2
         newsTitleView.adjustsFontSizeToFitWidth = false
         newsTitleView.font = UIFont.systemFont(ofSize: 16)
-
+    }
+    func configureMoreOtionBtn(){
+        moreOptionsView.isUserInteractionEnabled = true
+        moreOptionsView.tintColor = UIColor.black
+        moreOptionsView.setImage(UIImage(systemName: "ellipsis"), for: .normal)
     }
     
     func setupImageViewConstraints(){
@@ -53,14 +61,21 @@ class NewsTableViewCell: UITableViewCell {
         newsTitleView.leadingAnchor.constraint(equalTo: newsImageView.trailingAnchor, constant: 20).isActive = true
         newsTitleView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         newsTitleView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12).isActive = true
-    
+    }
+    func setupMoreOptionIconConstraints(){
+        moreOptionsView.translatesAutoresizingMaskIntoConstraints = false
+        moreOptionsView.trailingAnchor.constraint(equalTo: trailingAnchor , constant: -24).isActive = true
+        moreOptionsView.topAnchor.constraint(equalTo: topAnchor, constant: 12).isActive = true
     }
     
-
     func setNewsCell(news: Article){
-        newsTitleView.text =  news.description
-        newsImageView.load(url: news.urlToImage!)
+        newsTitleView.text =  news.title
+        newsImageView.load(url: news.urlToImage ?? "")
         
+    }
+    func setSavedNewsCell(news: NewsModelObject){
+        newsTitleView.text =  news.title
+        newsImageView.load(url: news.urlToImage ?? "")
     }
 
 }

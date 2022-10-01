@@ -8,21 +8,21 @@
 import Foundation
 import UIKit
 
+
+
 extension UIImageView {
     func load(url: String){
-        guard let urlValid = URL(string: url) else {
-            return
-        }
-        DispatchQueue.global().async {[weak self] in
-            if let data  = try? Data(contentsOf :urlValid){
-                if let image = UIImage(data: data){
-                    DispatchQueue.main.async {
-                        self?.image = image
-                    }
-                }
-                
-            }
-        }
+        guard let imageURL = URL(string: url) else { return }
+
+              // just not to cause a deadlock in UI!
+          DispatchQueue.global().async {
+              guard let imageData = try? Data(contentsOf: imageURL) else { return }
+
+              let image = UIImage(data: imageData)
+              DispatchQueue.main.async {
+                  self.image = image
+              }
+          }
     }
 }
 

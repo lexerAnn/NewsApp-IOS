@@ -12,23 +12,23 @@ class HomeTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
+        
         setupTabs()
-
+        
         // Do any additional setup after loading the view.
     }
     
     func setupTabs(){
-        let navigationController = UINavigationController(rootViewController: NewsViewController())
-        navigationController.navigationBar.prefersLargeTitles = true
+        let navigationController1 = UINavigationController(rootViewController: NewsViewController())
+        let navigationController2 = UINavigationController(rootViewController: FavoriteViewController())
+
+        navigationController1.navigationBar.prefersLargeTitles = true
+        navigationController2.navigationBar.prefersLargeTitles = true
         
-        
-        let newsScreen = navigationController
-        newsScreen.tabBarItem = UITabBarItem(title: "News", image: UIImage(systemName: "newspaper"), tag: 0)
-        
-        let secondScreen = DetailsViewController()
-        secondScreen.tabBarItem = UITabBarItem(title: "Favorite", image: UIImage(systemName: "heart"), tag: 1)
-        
-        viewControllers =  [newsScreen, secondScreen]
+        navigationController1.tabBarItem = UITabBarItem(title: "News", image: UIImage(systemName: "newspaper"), tag: 0)
+        navigationController2.tabBarItem = UITabBarItem(title: "Favorites", image: UIImage(systemName: "heart"), tag: 1)
+
+        viewControllers =  [navigationController1, navigationController2]
         
     }
     
