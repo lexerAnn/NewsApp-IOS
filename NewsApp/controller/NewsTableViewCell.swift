@@ -23,10 +23,9 @@ class NewsTableViewCell: UITableViewCell {
         addSubview(moreOptionsView)
         configureImageView()
         configureTitleView()
-        configureMoreOtionBtn()
+//        configureMoreOtionBtn()
         setupImageViewConstraints()
         setupTitleViewConstraints()
-        setupMoreOptionIconConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -62,11 +61,11 @@ class NewsTableViewCell: UITableViewCell {
         newsTitleView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         newsTitleView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12).isActive = true
     }
-    func setupMoreOptionIconConstraints(){
-        moreOptionsView.translatesAutoresizingMaskIntoConstraints = false
-        moreOptionsView.trailingAnchor.constraint(equalTo: trailingAnchor , constant: -24).isActive = true
-        moreOptionsView.topAnchor.constraint(equalTo: topAnchor, constant: 12).isActive = true
-    }
+//    func setupMoreOptionIconConstraints(){
+//        moreOptionsView.translatesAutoresizingMaskIntoConstraints = false
+//        moreOptionsView.trailingAnchor.constraint(equalTo: trailingAnchor , constant: -24).isActive = true
+//        moreOptionsView.topAnchor.constraint(equalTo: topAnchor, constant: 12).isActive = true
+//    }
     
     func setNewsCell(news: Article){
         newsTitleView.text =  news.title

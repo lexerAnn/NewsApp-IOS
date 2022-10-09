@@ -36,6 +36,7 @@ class FavoriteViewController: UIViewController {
 
         configureTableView()
         setupTableViewConstrainst()
+        
 
         // Access all dogs in the realm
       
@@ -91,7 +92,7 @@ extension FavoriteViewController: UITableViewDelegate, UITableViewDataSource {
         print(news[indexPath.row].url)
         
         let vc = WebViewController()
-        vc.passedURL = news[indexPath.row].url
+        vc.passedArticle = news[indexPath.row]
         
         navigationController?.pushViewController(vc, animated: true)
 
@@ -104,6 +105,5 @@ extension FavoriteViewController: UITableViewDelegate, UITableViewDataSource {
        return 1
    }
 
-    
     
 }

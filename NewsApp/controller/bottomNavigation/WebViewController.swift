@@ -7,18 +7,23 @@
 
 import Foundation
 import WebKit
+import RealmSwift
 
 
 
 class WebViewController: UIViewController, WKNavigationDelegate{
 
     var webView = WKWebView()
-    var passedURL: String?
+    var passedArticle: NewsModelObject?
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpWebView()
+        
+        let addItem =  UIBarButtonItem( image: UIImage(systemName: "trash.slash"),style: .plain, target: self, action: #selector(alertController))
+        addItem.tintColor = .red
+        self.navigationItem.rightBarButtonItem = addItem
     }
     
     func setUpWebView(){
@@ -36,9 +41,39 @@ class WebViewController: UIViewController, WKNavigationDelegate{
         ])
         webView.navigationDelegate = self
         
-        let url = URL(string: passedURL ?? "")!
+        let url = URL(string: passedArticle?.url ?? "")!
         webView.load(URLRequest(url: url))
         webView.allowsBackForwardNavigationGestures = true
+    }
+    
+    @objc func alertController(){
+            let alert = UIAlertController(title: "Are you sure you want to delete this news?", message: "", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
+                self.deleteNewsDB()
+                alert.dismiss(animated: true, completion: nil)
+                self.navigationController?.popViewController(animated: true)
+            
+                
+            }))
+            alert.addAction(UIAlertAction(title: "No", style: .default, handler: { action in
+                alert.dismiss(animated: true, completion: nil)
+            }))
+            self.present(alert, animated: true, completion: nil)
+    }
+    
+    func deleteNewsDB(){
+        let realm = try! Realm()
+        do{
+            try realm.write{
+                realm.delete(passedArticle!)
+         }
+            
+        } catch (let error) {
+            let alert = UIAlertController(title: "Try Again", message: error.localizedDescription, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: .destructive, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 
     

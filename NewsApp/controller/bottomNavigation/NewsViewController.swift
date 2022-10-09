@@ -94,7 +94,7 @@ extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableVie: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableVie.dequeueReusableCell(withIdentifier: Cell.newsCell) as! NewsTableViewCell
-        cell.moreOptionsView.isHidden = true
+       // cell.moreOptionsView.isHidden = true
                 
     
         let newsCell = news[indexPath.row]

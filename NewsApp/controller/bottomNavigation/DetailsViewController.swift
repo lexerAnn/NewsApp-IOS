@@ -40,7 +40,8 @@ class DetailsViewController: UIViewController {
         setupContentConstraints()
         
         
-        let addItem =  UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveNewToDB))
+                
+        let addItem =  UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.down"), style: .plain, target: self, action: #selector(saveNewToDB))
         self.navigationItem.rightBarButtonItem = addItem
         
     }
@@ -108,7 +109,7 @@ class DetailsViewController: UIViewController {
     func setupNewsArthurLogo(){
         view.addSubview(newsArthurLogo)
         newsArthurLogo.image = UIImage(systemName: "person")
-        newsArthurLogo.tintColor = .black
+        newsArthurLogo.tintColor = .blue
     }
     func setupNewsArthurLogoConstraints(){
         newsArthurLogo.translatesAutoresizingMaskIntoConstraints = false
@@ -144,10 +145,19 @@ class DetailsViewController: UIViewController {
         view.addSubview(newsDate)
     
         //let date =  passedData?.publishedAt.stringToDate()
-        newsDate.text =  passedData?.publishedAt
+//        newsDate.text =  passedData?.publishedAt.substring(to: 0, 10)
         //dateFormatter(dateString: (passedData!.publishedAt))
         newsDate.font = UIFont.systemFont(ofSize: 16)
+        
     }
+    
+//    func getActualTimeStamp(input: String) -> String {
+//        let formatter = DateFormatter()
+//        formatter.locale = Locale(identifier: "en_US_POSIX")
+//        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+//        let date = formatter.date(from: input)
+//        return "\(date)"
+//    }
     
     func setupNewsDateConstraints(){
         newsDate.translatesAutoresizingMaskIntoConstraints = false
