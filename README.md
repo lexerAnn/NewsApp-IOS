@@ -9,4 +9,4 @@ A news app that consumes news api developed by [News API](https://newsapi.org/)
 
 
 ## Screenshots
-<img src="/screenshot/Screenshot (146).png" width="300"/> <img src="/screenshot/Screenshot (147).png" width="300"/>
+<img src="/screenshot/Screenshot 2022-10-09 at 3.26.36 PM.png" width="300"/> <img src="/screenshot/Screenshot 2022-10-09 at 3.26.12 PM.png" width="300"/>
